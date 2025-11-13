@@ -21,7 +21,7 @@
         "Glob"
     ],
     "ui_settings": {
-        "window_width": 900,
+        "window_width": 800,
         "window_height": 600,
         "theme": "light",
         "font_size": 10,
@@ -33,5 +33,14 @@
         "auto_timestamp": true,
         "backup_files": false,
         "default_encoding": "utf-8"
+    },
+    "ai_settings": {
+        "api_key": "AIzaSyCUqEHB0wXWU8N9lrlOXhliTgIJ00KC38s",
+        "model": "gemini-1.5-flash",
+        "temperature": 0.7,
+        "max_tokens": 2048,
+        "enable_rules": true,
+        "enable_workflows": true,
+        "auto_analyze": true
     }
 }

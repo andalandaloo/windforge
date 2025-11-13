@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Test gradient -->
+    <linearGradient id="testGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#30d158" stop-opacity="1" />
+      <stop offset="100%" stop-color="#28cd41" stop-opacity="1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Test tube -->
+  <path d="M14.5 4.5l-7 7a4.95 4.95 0 0 0 7 7l7-7a4.95 4.95 0 0 0-7-7z" 
+        fill="none" 
+        stroke="url(#testGradient)" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+  
+  <!-- Test liquid -->
+  <path d="M10 10l4 4" 
+        stroke="url(#testGradient)" 
+        stroke-width="3" 
+        stroke-linecap="round"/>
+  
+  <!-- Success checkmark -->
+  <path d="M6 12l2 2 4-4" 
+        stroke="url(#testGradient)" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"/>
+</svg>

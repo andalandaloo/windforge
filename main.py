@@ -14,6 +14,12 @@ from core.generators import generate_rule_md, save_rule_file, generate_workflow_
 from core.utils import validate_rule_input, validate_workflow_input, validate_directory_path
 from core.utils import get_default_windsurf_paths, get_default_config
 from core.config_manager import ConfigManager
+# Import generator functions directly
+# from core.generators.rules_generator import RulesGenerator  # Not needed - using functions from __init__.py
+# from core.generators.workflows_generator import WorkflowsGenerator  # Not needed - using functions from __init__.py
+from core.theme_loader import apply_apple_theme
+
+# Import UI components
 from ui.settings_dialog import SettingsDialog
 
 # Import AI tab only if AI is available
@@ -58,6 +64,8 @@ class WindsurfGeneratorApp(QMainWindow):
         # Create AI tab only if available
         if AI_AVAILABLE and AITab:
             self.ai_tab = AITab(self.config_manager)
+            # Load saved API key
+            self.load_saved_api_key()
         else:
             self.ai_tab = None
         
@@ -85,51 +93,28 @@ class WindsurfGeneratorApp(QMainWindow):
         main_layout.addWidget(self.tab_widget)
         central_widget.setLayout(main_layout)
         
-        # Set application style
-        self.setStyleSheet("""
-            QMainWindow {
-                background-color: #f5f5f5;
-            }
-            QTabWidget::pane {
-                border: 1px solid #c0c0c0;
-                background-color: white;
-            }
-            QTabBar::tab {
-                background-color: #e1e1e1;
-                padding: 8px 16px;
-                margin-right: 2px;
-            }
-            QTabBar::tab:selected {
-                background-color: white;
-                border-bottom: 2px solid #0078d4;
-            }
-            QPushButton {
-                background-color: #0078d4;
-                color: white;
-                border: none;
-                padding: 8px 16px;
-                border-radius: 4px;
-                font-weight: bold;
-            }
-            QPushButton:hover {
-                background-color: #106ebe;
-            }
-            QPushButton:pressed {
-                background-color: #005a9e;
-            }
-            QGroupBox {
-                font-weight: bold;
-                border: 2px solid #cccccc;
-                border-radius: 5px;
-                margin-top: 1ex;
-                padding-top: 10px;
-            }
-            QGroupBox::title {
-                subcontrol-origin: margin;
-                left: 10px;
-                padding: 0 5px 0 5px;
-            }
-        """)
+        # Apply Apple-style theme from QSS file
+        if not apply_apple_theme():
+            print("⚠️  Could not load Apple theme, using default styling")
+            # Fallback to basic styling if QSS file is not available
+            self.setStyleSheet("""
+                QMainWindow {
+                    background-color: #f8f9fa;
+                    color: #1d1d1f;
+                }
+                QPushButton {
+                    background-color: #007aff;
+                    color: #ffffff;
+                    border: none;
+                    border-radius: 8px;
+                    padding: 10px 20px;
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+                QPushButton:hover {
+                    background-color: #0056b3;
+                }
+            """)
     
     def setup_menu(self):
         """Setup application menu bar"""
@@ -580,24 +565,40 @@ class WindsurfGeneratorApp(QMainWindow):
     def show_about(self):
         """Show about dialog"""
         about_text = """
-        <h2>🔥 WindForge</h2>
-        <p><b>Version:</b> 2.0.0</p>
-        <p><b>Description:</b> The Ultimate AI-Powered Development Rules & Workflow Generator</p>
-        
-        <h3>🚀 Features:</h3>
-        <ul>
-            <li>🧩 Smart Rules Generator with AI assistance</li>
-            <li>⚙️ Advanced Workflow Builder</li>
-            <li>🤖 Gemini Flash 2.5 AI Integration</li>
-            <li>🎨 Modern UI with 21 custom macOS-style icons</li>
-            <li>📋 Live Markdown preview with copy/paste tools</li>
-            <li>💾 Comprehensive settings and configuration</li>
-        </ul>
-        
-        <h3>🛠️ Technology:</h3>
-        <p>Built with PyQt6, Python, and Google Gemini AI</p>
-        
-        <p><i>© 2024 WindForge Team - Forging the future of development workflows</i></p>
+        <div style='font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #1d1d1f; line-height: 1.6;'>
+            <div style='text-align: center; margin-bottom: 24px;'>
+                <h1 style='color: #007aff; font-size: 32px; font-weight: 700; margin: 0;'>🔥 WindForge</h1>
+                <p style='color: #86868b; font-size: 16px; margin: 8px 0;'>The Ultimate AI-Powered Development Tool</p>
+                <div style='background: linear-gradient(135deg, #007aff, #5856d6); color: white; padding: 6px 12px; border-radius: 16px; display: inline-block; font-size: 14px; font-weight: 600;'>
+                    Version 2.0.0
+                </div>
+            </div>
+            
+            <div style='background-color: #f2f2f7; padding: 20px; border-radius: 12px; margin: 16px 0;'>
+                <h3 style='color: #1d1d1f; font-size: 18px; font-weight: 600; margin: 0 0 12px 0;'>🚀 Core Features</h3>
+                <ul style='margin: 0; padding-left: 20px; color: #1d1d1f;'>
+                    <li style='margin: 6px 0;'>🧩 Smart Rules Generator with AI assistance</li>
+                    <li style='margin: 6px 0;'>⚙️ Advanced Workflow Builder</li>
+                    <li style='margin: 6px 0;'>🤖 Gemini Flash 2.5 AI Integration</li>
+                    <li style='margin: 6px 0;'>🎨 Modern Apple-style UI with custom icons</li>
+                    <li style='margin: 6px 0;'>📋 Live Markdown preview with copy/paste tools</li>
+                    <li style='margin: 6px 0;'>💾 Comprehensive settings and configuration</li>
+                </ul>
+            </div>
+            
+            <div style='background-color: #e8f4fd; padding: 20px; border-radius: 12px; margin: 16px 0; border-left: 4px solid #007aff;'>
+                <h3 style='color: #007aff; font-size: 18px; font-weight: 600; margin: 0 0 12px 0;'>🛠️ Technology Stack</h3>
+                <p style='margin: 0; color: #1d1d1f;'>Built with <strong>PyQt6</strong>, <strong>Python 3.8+</strong>, and <strong>Google Gemini AI</strong></p>
+                <p style='margin: 8px 0 0 0; color: #86868b; font-size: 14px;'>Designed with Apple's Human Interface Guidelines</p>
+            </div>
+            
+            <div style='text-align: center; margin-top: 24px; padding-top: 16px; border-top: 1px solid #e5e5e7;'>
+                <p style='color: #86868b; font-size: 14px; margin: 0;'>
+                    © 2024 WindForge Team<br>
+                    <em style='color: #007aff;'>Forging the future of development workflows</em>
+                </p>
+            </div>
+        </div>
         """
         
         QMessageBox.about(self, "About WindForge", about_text)
@@ -609,6 +610,53 @@ class WindsurfGeneratorApp(QMainWindow):
             subprocess.Popen([sys.executable, "icon_showcase.py"])
         except Exception as e:
             QMessageBox.warning(self, "Error", f"Could not open icon showcase:\n{str(e)}")
+    
+    def load_saved_api_key(self):
+        """Load saved API key from settings and configure AI"""
+        if not self.ai_tab:
+            return
+        
+        try:
+            # Get saved API key
+            api_key = self.config_manager.get('ai_settings.api_key', '')
+            
+            if api_key:
+                # Set API key in AI tab
+                self.ai_tab.api_key_input.setText(api_key)
+                
+                # Automatically configure AI with saved key
+                success = self.ai_tab.set_api_key_from_settings(api_key)
+                if success:
+                    print("✅ Loaded saved API key successfully")
+                else:
+                    print("⚠️  Saved API key is invalid")
+                    
+        except Exception as e:
+            print(f"Error loading saved API key: {e}")
+    
+    def on_settings_changed(self):
+        """Handle settings changes"""
+        # Reload API key if it was changed in settings
+        if self.ai_tab:
+            try:
+                api_key = self.config_manager.get('ai_settings.api_key', '')
+                current_key = self.ai_tab.api_key_input.text()
+                
+                # If API key changed, update it
+                if api_key != current_key:
+                    self.ai_tab.api_key_input.setText(api_key)
+                    if api_key:
+                        success = self.ai_tab.set_api_key_from_settings(api_key)
+                        if success:
+                            print("✅ Updated API key from settings")
+                        else:
+                            print("⚠️  New API key is invalid")
+                    else:
+                        print("ℹ️  API key removed from settings")
+                        self.ai_tab.check_ai_status()
+                        
+            except Exception as e:
+                print(f"Error updating API key from settings: {e}")
 
 def main():
     app = QApplication(sys.argv)

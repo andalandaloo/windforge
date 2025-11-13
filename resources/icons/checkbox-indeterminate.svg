@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Apple Blue gradient -->
+    <linearGradient id="indeterminateBgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#007aff" stop-opacity="1" />
+      <stop offset="100%" stop-color="#0056b3" stop-opacity="1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Checkbox background -->
+  <rect x="4" y="4" width="16" height="16" 
+        rx="4" ry="4" 
+        fill="url(#indeterminateBgGradient)" 
+        stroke="none"/>
+  
+  <!-- Indeterminate line -->
+  <line x1="8" y1="12" x2="16" y2="12" 
+        stroke="#ffffff" 
+        stroke-width="2.5" 
+        stroke-linecap="round"/>
+</svg>

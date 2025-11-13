@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for modern look -->
+    <linearGradient id="dropdownGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#86868b" stop-opacity="1" />
+      <stop offset="100%" stop-color="#6d6d70" stop-opacity="1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Dropdown arrow pointing down -->
+  <path d="M7 10l5 5 5-5" 
+        stroke="url(#dropdownGradient)" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"/>
+</svg>

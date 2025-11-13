@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Export gradient -->
+    <linearGradient id="exportGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34c759" stop-opacity="1" />
+      <stop offset="100%" stop-color="#30d158" stop-opacity="1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Export arrow -->
+  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" 
+        stroke="url(#exportGradient)" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"/>
+  
+  <path d="M7 10l5-5 5 5" 
+        stroke="url(#exportGradient)" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"/>
+  
+  <path d="M12 15V5" 
+        stroke="url(#exportGradient)" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        fill="none"/>
+</svg>

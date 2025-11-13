@@ -35,14 +35,44 @@ class IconShowcase(QMainWindow):
         scroll_widget = QWidget()
         scroll_layout = QVBoxLayout()
         
+        # Apply Apple-style design
+        self.setStyleSheet("""
+            QMainWindow {
+                background-color: #f8f9fa;
+                color: #1d1d1f;
+            }
+            
+            QLabel {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                color: #1d1d1f;
+            }
+            
+            QScrollArea {
+                border: none;
+                background-color: #f8f9fa;
+            }
+            
+            QWidget {
+                background-color: #f8f9fa;
+            }
+        """)
+        
         # Title
         title_label = QLabel("🎨 WindForge Icons Showcase")
         title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         title_font = QFont()
-        title_font.setPointSize(18)
-        title_font.setBold(True)
+        title_font.setFamily("-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif")
+        title_font.setPointSize(24)
+        title_font.setWeight(QFont.Weight.Bold)
         title_label.setFont(title_font)
-        title_label.setStyleSheet("color: #2C5F8F; margin: 20px;")
+        title_label.setStyleSheet("""
+            color: #007aff; 
+            margin: 24px;
+            padding: 16px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e5e5e7;
+        """)
         scroll_layout.addWidget(title_label)
         
         # Icon categories
@@ -113,18 +143,22 @@ class IconShowcase(QMainWindow):
     
     def add_icon_category(self, layout, category_title, icons):
         """Add a category of icons to the layout"""
-        # Category frame
-        category_frame = QFrame()
-        category_layout = QVBoxLayout()
-        
         # Category title
         category_label = QLabel(category_title)
         category_font = QFont()
-        category_font.setPointSize(14)
-        category_font.setBold(True)
+        category_font.setFamily("-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif")
+        category_font.setPointSize(18)
+        category_font.setWeight(QFont.Weight.DemiBold)
         category_label.setFont(category_font)
-        category_label.setStyleSheet("color: #4A90E2; margin-bottom: 10px;")
-        category_layout.addWidget(category_label)
+        category_label.setStyleSheet("""
+            color: #1d1d1f; 
+            margin: 20px 0 12px 0;
+            padding: 12px 16px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e5e5e7;
+        """)
+        layout.addWidget(category_label)
         
         # Icons grid
         icons_grid = QGridLayout()
@@ -136,53 +170,54 @@ class IconShowcase(QMainWindow):
             col = i % 3
             icons_grid.addWidget(icon_widget, row, col)
         
+        category_frame = QFrame()
+        category_layout = QVBoxLayout()
         category_layout.addLayout(icons_grid)
         category_frame.setLayout(category_layout)
         layout.addWidget(category_frame)
     
     def create_icon_widget(self, icon_file, description):
-        """Create a widget displaying an icon with its description"""
+        """Create a widget displaying an icon with description"""
         widget = QWidget()
-        layout = QVBoxLayout()
+        widget.setFixedSize(220, 180)
         
-        # Icon display
-        icon_path = os.path.join("resources", "icons", icon_file)
+        layout = QVBoxLayout()
+        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        layout.setSpacing(12)
+        
+        # Icon label
         icon_label = QLabel()
+        icon_path = os.path.join("resources", "icons", icon_file)
         
         if os.path.exists(icon_path):
-            # Load and scale icon
-            pixmap = QIcon(icon_path).pixmap(64, 64)
+            pixmap = QIcon(icon_path).pixmap(72, 72)
             icon_label.setPixmap(pixmap)
         else:
             icon_label.setText("❌")
-            icon_label.setStyleSheet("font-size: 32px;")
+            icon_label.setStyleSheet("font-size: 48px; color: #ff3b30;")
         
         icon_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        icon_label.setFixedSize(80, 80)
-        icon_label.setStyleSheet("""
-            QLabel {
-                border: 2px solid #e9ecef;
-                border-radius: 8px;
-                background-color: #f8f9fa;
-            }
-        """)
+        layout.addWidget(icon_label)
         
-        # File name
-        file_label = QLabel(icon_file)
-        file_font = QFont()
-        file_font.setPointSize(10)
-        file_font.setBold(True)
-        file_label.setFont(file_font)
-        file_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        file_label.setStyleSheet("color: #6c757d; margin-top: 5px;")
-        
-        # Description
+        # Description label
         desc_label = QLabel(description)
-        desc_font = QFont()
-        desc_font.setPointSize(9)
-        desc_label.setFont(desc_font)
-        desc_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         desc_label.setWordWrap(True)
+        desc_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        desc_font = QFont()
+        desc_font.setFamily("-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif")
+        desc_font.setPointSize(12)
+        desc_font.setWeight(QFont.Weight.Medium)
+        desc_label.setFont(desc_font)
+        layout.addWidget(desc_label)
+        
+        # File name label
+        file_label = QLabel(icon_file)
+        file_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        file_font = QFont()
+        file_font.setFamily("Monaco, 'Courier New', monospace")
+        file_font.setPointSize(10)
+        file_label.setFont(file_font)
+        file_label.setStyleSheet("color: #86868b; background-color: #f2f2f7; padding: 4px 8px; border-radius: 4px;")
         desc_label.setStyleSheet("color: #868e96; margin-top: 2px;")
         
         layout.addWidget(icon_label)

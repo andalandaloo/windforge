@@ -103,18 +103,10 @@ class AITab(QWidget):
         self.status_label.setWordWrap(True)
         status_layout.addWidget(self.status_label)
         
-        # API Key configuration
-        api_key_layout = QHBoxLayout()
+        
+        # Keep API key input hidden but accessible for loading saved keys
         self.api_key_input = QLineEdit()
-        self.api_key_input.setPlaceholderText("Enter Gemini API Key...")
-        self.api_key_input.setEchoMode(QLineEdit.EchoMode.Password)
-        
-        self.btn_set_api_key = QPushButton("Set API Key")
-        self.btn_set_api_key.clicked.connect(self.set_api_key)
-        
-        api_key_layout.addWidget(self.api_key_input)
-        api_key_layout.addWidget(self.btn_set_api_key)
-        status_layout.addLayout(api_key_layout)
+        self.api_key_input.setVisible(False)
         
         status_group.setLayout(status_layout)
         layout.addWidget(status_group)
@@ -330,81 +322,103 @@ class AITab(QWidget):
         status_message = self.ai_generator.get_status_message()
         self.status_label.setText(status_message)
         
-        # Change status label color based on status
+        # Change status label color based on status - Apple style
         if "✅" in status_message:
-            self.status_label.setStyleSheet("color: green; font-weight: bold;")
+            self.status_label.setStyleSheet("""
+                color: #30d158;
+                font-weight: 600;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                background-color: #f0fff4;
+                padding: 8px 12px;
+                border-radius: 8px;
+                border: 1px solid #c6f6d5;
+            """)
         elif "⚠️" in status_message:
-            self.status_label.setStyleSheet("color: orange; font-weight: bold;")
+            self.status_label.setStyleSheet("""
+                color: #ff9500;
+                font-weight: 600;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                background-color: #fff8f0;
+                padding: 8px 12px;
+                border-radius: 8px;
+                border: 1px solid #fed7aa;
+            """)
         elif "❌" in status_message:
-            self.status_label.setStyleSheet("color: red; font-weight: bold;")
+            self.status_label.setStyleSheet("""
+                color: #ff3b30;
+                font-weight: 600;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                background-color: #fff5f5;
+                padding: 8px 12px;
+                border-radius: 8px;
+                border: 1px solid #fecaca;
+            """)
         else:
-            self.status_label.setStyleSheet("color: black;")
+            self.status_label.setStyleSheet("""
+                color: #1d1d1f;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                padding: 8px 12px;
+                border-radius: 8px;
+                background-color: #f2f2f7;
+            """)
         
         # Enable/disable generate button based on status
-        can_generate = (
-            self.ai_generator.is_available() and
-            self.project_idea.toPlainText().strip() and
-            self.project_path.text().strip() and
-            (self.generate_rules_cb.isChecked() or self.generate_workflows_cb.isChecked())
-        )
-        self.btn_generate.setEnabled(can_generate)
+        try:
+            can_generate = (
+                self.ai_generator.is_available() and
+                bool(self.project_idea.toPlainText().strip()) and
+                bool(self.project_path.text().strip()) and
+                (self.generate_rules_cb.isChecked() or self.generate_workflows_cb.isChecked())
+            )
+            self.btn_generate.setEnabled(bool(can_generate))
+        except Exception as e:
+            print(f"Error updating generate button: {e}")
+            self.btn_generate.setEnabled(False)
         
-        # Update API key input based on availability
-        from core.generators import AI_AVAILABLE
-        self.api_key_input.setEnabled(AI_AVAILABLE)
-        self.btn_set_api_key.setEnabled(AI_AVAILABLE)
     
-    def set_api_key(self):
-        """Set Gemini API key"""
-        api_key = self.api_key_input.text().strip()
+    def open_settings(self):
+        """Open settings dialog"""
+        try:
+            # Get parent window to open settings
+            parent_window = self.window()
+            if hasattr(parent_window, 'open_settings'):
+                parent_window.open_settings()
+            else:
+                QMessageBox.information(self, "Settings", 
+                    "Please use Help → Settings from the main menu to configure AI settings.")
+        except Exception as e:
+            QMessageBox.warning(self, "Error", f"Could not open settings: {e}")
+    
+    def set_api_key_from_settings(self, api_key):
+        """Set API key from settings (called by main window)"""
         if not api_key:
-            QMessageBox.warning(self, "Warning", "Please enter a valid API key.")
-            return
-        
+            return False
+            
         try:
             # Check if AI generator is available at all
             if not hasattr(self.ai_generator, 'set_api_key'):
-                QMessageBox.critical(self, "AI Not Available", 
-                    "AI Generator is not available due to library issues.\n\n"
-                    "This is likely due to Python 3.14 compatibility issues with Google AI libraries.\n\n"
-                    "Solutions:\n"
-                    "1. Use Python 3.11 or 3.12\n"
-                    "2. Use WindForge without AI features\n"
-                    "3. Wait for library updates")
-                return
+                return False
             
             success = self.ai_generator.set_api_key(api_key)
             if success:
-                QMessageBox.information(self, "Success", 
-                    "✅ API key configured successfully!\n\n"
-                    "You can now use AI-powered generation features.")
-                self.api_key_input.clear()
                 self.check_ai_status()
+                return True
             else:
-                # Check the specific reason for failure
-                status_msg = self.ai_generator.get_status_message()
-                QMessageBox.warning(self, "Configuration Failed", 
-                    f"❌ Failed to configure API key.\n\n"
-                    f"Status: {status_msg}\n\n"
-                    f"Please check:\n"
-                    f"• API key is valid\n"
-                    f"• Internet connection\n"
-                    f"• Google AI libraries are working")
+                return False
                 
         except Exception as e:
-            QMessageBox.critical(self, "Error", 
-                f"❌ Unexpected error occurred:\n\n{str(e)}\n\n"
-                f"This might be due to library compatibility issues.")
-        
-        # Always refresh status
-        self.check_ai_status()
+            print(f"Error setting API key from settings: {e}")
+            return False
     
     def browse_project_folder(self):
         """Browse for project folder"""
         folder = QFileDialog.getExistingDirectory(self, "Select Project Folder")
         if folder:
             self.project_path.setText(folder)
-            self.check_ai_status()
+            try:
+                self.check_ai_status()
+            except Exception as e:
+                print(f"Error checking AI status after folder selection: {e}")
     
     def browse_rules_output(self):
         """Browse for rules output folder"""

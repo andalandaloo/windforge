@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Key gradient -->
+    <linearGradient id="keyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd60a" stop-opacity="1" />
+      <stop offset="100%" stop-color="#ffbe0b" stop-opacity="1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Key body -->
+  <circle cx="8" cy="8" r="6" 
+          fill="none" 
+          stroke="url(#keyGradient)" 
+          stroke-width="2"/>
+  
+  <!-- Key teeth -->
+  <path d="M15 11l6 6M21 15l-2 2M19 13l-2 2" 
+        stroke="url(#keyGradient)" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"/>
+  
+  <!-- Key hole -->
+  <circle cx="8" cy="8" r="2" fill="url(#keyGradient)"/>
+</svg>

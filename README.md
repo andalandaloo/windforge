@@ -780,6 +780,23 @@ pip install google-generativeai
 
 ![Design Flow](resources/diagrams/flow.svg)
 
+### 🎨 **Apple-Style Theme System**
+
+WindForge uses **Qt Style Sheets (QSS)** for theming, providing a native Apple-inspired design:
+
+- **🎯 QSS Format**: Proper Qt styling with full compatibility
+- **🍎 Apple Design**: Colors, typography, and spacing matching Apple's guidelines
+- **⚡ Performance**: Optimized loading and rendering
+- **🔧 Maintainable**: Separate theme files for easy customization
+
+```bash
+# Theme files location
+resources/styles/apple_theme.qss
+
+# Theme loading system
+core/theme_loader.py
+```
+
 ### 🔧 **Icon Showcase**
 ```bash
 # Preview all icons

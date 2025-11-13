@@ -23,9 +23,134 @@ class SettingsDialog(QDialog):
     
     def init_ui(self):
         """Initialize the user interface"""
-        self.setWindowTitle("Settings - Windsurf Generator")
+        self.setWindowTitle("WindForge Settings")
         self.setModal(True)
-        self.resize(600, 500)
+        self.resize(700, 600)
+        
+        # Apply Apple-style window design
+        self.setStyleSheet("""
+            QDialog {
+                background-color: #f8f9fa;
+                color: #1d1d1f;
+            }
+            
+            QTabWidget::pane {
+                border: none;
+                background-color: #ffffff;
+                border-radius: 12px;
+                margin-top: 8px;
+            }
+            
+            QTabBar::tab {
+                background-color: transparent;
+                color: #86868b;
+                padding: 12px 20px;
+                margin-right: 4px;
+                border: none;
+                border-radius: 8px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-size: 14px;
+                font-weight: 500;
+                min-width: 100px;
+            }
+            
+            QTabBar::tab:selected {
+                background-color: #007aff;
+                color: #ffffff;
+                font-weight: 600;
+            }
+            
+            QTabBar::tab:hover:!selected {
+                background-color: #f2f2f7;
+                color: #1d1d1f;
+            }
+            
+            QGroupBox {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-size: 16px;
+                font-weight: 600;
+                color: #1d1d1f;
+                border: 1px solid #e5e5e7;
+                border-radius: 12px;
+                margin-top: 12px;
+                padding-top: 16px;
+                background-color: #ffffff;
+            }
+            
+            QGroupBox::title {
+                subcontrol-origin: margin;
+                left: 16px;
+                padding: 0 8px;
+                background-color: #ffffff;
+            }
+            
+            QLineEdit, QSpinBox, QComboBox {
+                border: 1px solid #d1d1d6;
+                border-radius: 8px;
+                padding: 8px 12px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-size: 14px;
+                background-color: #ffffff;
+                color: #1d1d1f;
+                selection-background-color: #007aff;
+            }
+            
+            QLineEdit:focus, QSpinBox:focus, QComboBox:focus {
+                border: 2px solid #007aff;
+                outline: none;
+            }
+            
+            QPushButton {
+                background-color: #007aff;
+                color: #ffffff;
+                border: none;
+                border-radius: 8px;
+                padding: 10px 20px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                min-height: 20px;
+            }
+            
+            QPushButton:hover {
+                background-color: #0056b3;
+            }
+            
+            QPushButton:pressed {
+                background-color: #004494;
+            }
+            
+            QLabel {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                color: #1d1d1f;
+                font-size: 14px;
+            }
+            
+            QCheckBox {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                color: #1d1d1f;
+                font-size: 14px;
+                spacing: 8px;
+            }
+            
+            QCheckBox::indicator {
+                width: 18px;
+                height: 18px;
+                border-radius: 4px;
+                border: 1px solid #d1d1d6;
+                background-color: #ffffff;
+            }
+            
+            QCheckBox::indicator:checked {
+                background-color: #007aff;
+                border: 1px solid #007aff;
+                image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xIDQuNUw0LjUgOEwxMSAxIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K);
+            }
+            
+            QCheckBox::indicator:hover {
+                border-color: #007aff;
+            }
+        """)
         
         # Set settings icon
         settings_icon_path = os.path.join("resources", "icons", "settings_icon.svg")
@@ -40,16 +165,25 @@ class SettingsDialog(QDialog):
         # Create tabs
         self.general_tab = self.create_general_tab()
         self.paths_tab = self.create_paths_tab()
+        self.ai_tab = self.create_ai_tab()
         self.categories_tab = self.create_categories_tab()
         self.ui_tab = self.create_ui_tab()
         self.templates_tab = self.create_templates_tab()
         
-        # Add tabs
-        self.tab_widget.addTab(self.general_tab, "General")
-        self.tab_widget.addTab(self.paths_tab, "Paths")
-        self.tab_widget.addTab(self.categories_tab, "Categories")
-        self.tab_widget.addTab(self.ui_tab, "Interface")
-        self.tab_widget.addTab(self.templates_tab, "Templates")
+        # Add tabs with icons
+        general_icon = QIcon("resources/icons/general-settings.svg")
+        paths_icon = QIcon("resources/icons/paths-settings.svg")
+        ai_icon = QIcon("resources/icons/ai-settings.svg")
+        categories_icon = QIcon("resources/icons/categories-settings.svg")
+        interface_icon = QIcon("resources/icons/interface-settings.svg")
+        templates_icon = QIcon("resources/icons/templates-settings.svg")
+        
+        self.tab_widget.addTab(self.general_tab, general_icon, "General")
+        self.tab_widget.addTab(self.paths_tab, paths_icon, "Paths")
+        self.tab_widget.addTab(self.ai_tab, ai_icon, "AI Settings")
+        self.tab_widget.addTab(self.categories_tab, categories_icon, "Categories")
+        self.tab_widget.addTab(self.ui_tab, interface_icon, "Interface")
+        self.tab_widget.addTab(self.templates_tab, templates_icon, "Templates")
         
         layout.addWidget(self.tab_widget)
         
@@ -57,18 +191,15 @@ class SettingsDialog(QDialog):
         button_layout = QHBoxLayout()
         
         self.btn_reset = QPushButton("Reset to Defaults")
+        self.btn_reset.setIcon(QIcon("resources/icons/reset-settings.svg"))
         self.btn_reset.clicked.connect(self.reset_to_defaults)
         
         self.btn_export = QPushButton("Export Settings")
-        export_icon_path = os.path.join("resources", "icons", "export_icon.svg")
-        if os.path.exists(export_icon_path):
-            self.btn_export.setIcon(QIcon(export_icon_path))
+        self.btn_export.setIcon(QIcon("resources/icons/export-settings.svg"))
         self.btn_export.clicked.connect(self.export_settings)
         
         self.btn_import = QPushButton("Import Settings")
-        import_icon_path = os.path.join("resources", "icons", "import_icon.svg")
-        if os.path.exists(import_icon_path):
-            self.btn_import.setIcon(QIcon(import_icon_path))
+        self.btn_import.setIcon(QIcon("resources/icons/import-settings.svg"))
         self.btn_import.clicked.connect(self.import_settings)
         
         button_layout.addWidget(self.btn_reset)
@@ -176,6 +307,112 @@ class SettingsDialog(QDialog):
         
         paths_group.setLayout(paths_layout)
         layout.addWidget(paths_group)
+        
+        layout.addStretch()
+        tab.setLayout(layout)
+        return tab
+    
+    def create_ai_tab(self):
+        """Create AI settings tab"""
+        tab = QWidget()
+        layout = QVBoxLayout()
+        
+        # AI Configuration group
+        ai_config_group = QGroupBox("AI Configuration")
+        ai_config_layout = QFormLayout()
+        
+        # Google API Key
+        api_key_layout = QHBoxLayout()
+        self.api_key_edit = QLineEdit()
+        self.api_key_edit.setEchoMode(QLineEdit.EchoMode.Password)
+        self.api_key_edit.setPlaceholderText("Enter your Google Gemini API Key...")
+        
+        self.btn_show_api_key = QPushButton()
+        self.btn_show_api_key.setIcon(QIcon("resources/icons/eye-show.svg"))
+        self.btn_show_api_key.setMaximumWidth(40)
+        self.btn_show_api_key.setCheckable(True)
+        self.btn_show_api_key.clicked.connect(self.toggle_api_key_visibility)
+        
+        self.btn_test_api_key = QPushButton("Test")
+        self.btn_test_api_key.setIcon(QIcon("resources/icons/test-api.svg"))
+        self.btn_test_api_key.clicked.connect(self.test_api_key)
+        
+        api_key_layout.addWidget(self.api_key_edit)
+        api_key_layout.addWidget(self.btn_show_api_key)
+        api_key_layout.addWidget(self.btn_test_api_key)
+        
+        ai_config_layout.addRow("Google API Key:", api_key_layout)
+        
+        # AI Status
+        self.ai_status_label = QLabel("Not configured")
+        self.ai_status_label.setStyleSheet("""
+            color: #86868b;
+            font-style: italic;
+            padding: 4px 8px;
+            background-color: #f2f2f7;
+            border-radius: 4px;
+        """)
+        ai_config_layout.addRow("AI Status:", self.ai_status_label)
+        
+        # AI Model Settings
+        ai_model_layout = QFormLayout()
+        
+        # Model selection
+        self.model_combo = QComboBox()
+        self.model_combo.addItems([
+            "gemini-1.5-flash",
+            "gemini-1.5-pro", 
+            "gemini-1.0-pro"
+        ])
+        ai_model_layout.addRow("AI Model:", self.model_combo)
+        
+        # Temperature setting
+        self.temperature_slider = QSlider(Qt.Orientation.Horizontal)
+        self.temperature_slider.setMinimum(0)
+        self.temperature_slider.setMaximum(100)
+        self.temperature_slider.setValue(70)
+        self.temperature_slider.valueChanged.connect(self.update_temperature_label)
+        
+        temp_layout = QHBoxLayout()
+        self.temperature_label = QLabel("0.7")
+        temp_layout.addWidget(self.temperature_slider)
+        temp_layout.addWidget(self.temperature_label)
+        
+        ai_model_layout.addRow("Temperature:", temp_layout)
+        
+        # Max tokens
+        self.max_tokens_spin = QSpinBox()
+        self.max_tokens_spin.setMinimum(100)
+        self.max_tokens_spin.setMaximum(8192)
+        self.max_tokens_spin.setValue(2048)
+        ai_model_layout.addRow("Max Tokens:", self.max_tokens_spin)
+        
+        ai_config_group.setLayout(ai_config_layout)
+        layout.addWidget(ai_config_group)
+        
+        # AI Model Settings group
+        ai_model_group = QGroupBox("Model Settings")
+        ai_model_group.setLayout(ai_model_layout)
+        layout.addWidget(ai_model_group)
+        
+        # AI Features group
+        ai_features_group = QGroupBox("AI Features")
+        ai_features_layout = QVBoxLayout()
+        
+        self.enable_ai_rules_cb = QCheckBox("Enable AI Rules Generation")
+        self.enable_ai_rules_cb.setChecked(True)
+        ai_features_layout.addWidget(self.enable_ai_rules_cb)
+        
+        self.enable_ai_workflows_cb = QCheckBox("Enable AI Workflows Generation")
+        self.enable_ai_workflows_cb.setChecked(True)
+        ai_features_layout.addWidget(self.enable_ai_workflows_cb)
+        
+        self.auto_analyze_project_cb = QCheckBox("Auto-analyze project structure")
+        self.auto_analyze_project_cb.setChecked(True)
+        ai_features_layout.addWidget(self.auto_analyze_project_cb)
+        
+        ai_features_group.setLayout(ai_features_layout)
+        layout.addWidget(ai_features_group)
         
         layout.addStretch()
         tab.setLayout(layout)
@@ -338,6 +575,9 @@ class SettingsDialog(QDialog):
         
         # Templates tab
         self.load_template()
+        
+        # AI tab
+        self.load_ai_settings()
     
     def load_categories(self):
         """Load categories into the list widget"""
@@ -466,6 +706,15 @@ class SettingsDialog(QDialog):
         self.config_manager.set('ui_settings.show_line_numbers', self.line_numbers_cb.isChecked())
         self.config_manager.set('ui_settings.auto_save_preview', self.auto_save_preview_cb.isChecked())
         
+        # Save AI settings
+        self.config_manager.set('ai_settings.api_key', self.api_key_edit.text())
+        self.config_manager.set('ai_settings.model', self.model_combo.currentText())
+        self.config_manager.set('ai_settings.temperature', self.temperature_slider.value() / 100.0)
+        self.config_manager.set('ai_settings.max_tokens', self.max_tokens_spin.value())
+        self.config_manager.set('ai_settings.enable_rules', self.enable_ai_rules_cb.isChecked())
+        self.config_manager.set('ai_settings.enable_workflows', self.enable_ai_workflows_cb.isChecked())
+        self.config_manager.set('ai_settings.auto_analyze', self.auto_analyze_project_cb.isChecked())
+        
         # Save configuration
         self.config_manager.save_config()
         
@@ -473,3 +722,124 @@ class SettingsDialog(QDialog):
         self.settings_changed.emit()
         
         self.accept()
+    
+    def toggle_api_key_visibility(self):
+        """Toggle API key visibility"""
+        if self.btn_show_api_key.isChecked():
+            self.api_key_edit.setEchoMode(QLineEdit.EchoMode.Normal)
+            self.btn_show_api_key.setIcon(QIcon("resources/icons/eye-hide.svg"))
+        else:
+            self.api_key_edit.setEchoMode(QLineEdit.EchoMode.Password)
+            self.btn_show_api_key.setIcon(QIcon("resources/icons/eye-show.svg"))
+    
+    def update_temperature_label(self, value):
+        """Update temperature label"""
+        temp = value / 100.0
+        self.temperature_label.setText(f"{temp:.1f}")
+    
+    def test_api_key(self):
+        """Test the API key"""
+        api_key = self.api_key_edit.text().strip()
+        if not api_key:
+            QMessageBox.warning(self, "Warning", "Please enter an API key first.")
+            return
+        
+        try:
+            # Import AI generator to test
+            from core.generators import AI_AVAILABLE
+            if not AI_AVAILABLE:
+                QMessageBox.warning(self, "AI Not Available", 
+                    "AI features are not available. Please check your installation.")
+                return
+            
+            from core.generators.ai_generator import AIGenerator
+            ai_generator = AIGenerator()
+            
+            # Test the API key
+            success = ai_generator.set_api_key(api_key)
+            if success:
+                self.ai_status_label.setText("✅ API key is valid")
+                self.ai_status_label.setStyleSheet("""
+                    color: #30d158;
+                    font-weight: 600;
+                    padding: 4px 8px;
+                    background-color: #f0fff4;
+                    border-radius: 4px;
+                """)
+                QMessageBox.information(self, "Success", 
+                    "✅ API key is valid and working!")
+            else:
+                self.ai_status_label.setText("❌ Invalid API key")
+                self.ai_status_label.setStyleSheet("""
+                    color: #ff3b30;
+                    font-weight: 600;
+                    padding: 4px 8px;
+                    background-color: #fff5f5;
+                    border-radius: 4px;
+                """)
+                QMessageBox.warning(self, "Invalid API Key", 
+                    "❌ The API key is invalid or there's a connection issue.")
+                
+        except Exception as e:
+            self.ai_status_label.setText("⚠️ Test failed")
+            self.ai_status_label.setStyleSheet("""
+                color: #ff9500;
+                font-weight: 600;
+                padding: 4px 8px;
+                background-color: #fff8f0;
+                border-radius: 4px;
+            """)
+            QMessageBox.critical(self, "Test Failed", 
+                f"❌ Failed to test API key:\n\n{str(e)}")
+    
+    def load_ai_settings(self):
+        """Load AI settings from config"""
+        try:
+            # Load API key
+            api_key = self.config_manager.get('ai_settings.api_key', '')
+            self.api_key_edit.setText(api_key)
+            
+            # Load model
+            model = self.config_manager.get('ai_settings.model', 'gemini-1.5-flash')
+            index = self.model_combo.findText(model)
+            if index >= 0:
+                self.model_combo.setCurrentIndex(index)
+            
+            # Load temperature
+            temperature = self.config_manager.get('ai_settings.temperature', 0.7)
+            self.temperature_slider.setValue(int(temperature * 100))
+            
+            # Load max tokens
+            max_tokens = self.config_manager.get('ai_settings.max_tokens', 2048)
+            self.max_tokens_spin.setValue(max_tokens)
+            
+            # Load feature flags
+            self.enable_ai_rules_cb.setChecked(
+                self.config_manager.get('ai_settings.enable_rules', True))
+            self.enable_ai_workflows_cb.setChecked(
+                self.config_manager.get('ai_settings.enable_workflows', True))
+            self.auto_analyze_project_cb.setChecked(
+                self.config_manager.get('ai_settings.auto_analyze', True))
+            
+            # Update status based on API key
+            if api_key:
+                self.ai_status_label.setText("🔑 API key configured")
+                self.ai_status_label.setStyleSheet("""
+                    color: #007aff;
+                    font-weight: 600;
+                    padding: 4px 8px;
+                    background-color: #f0f8ff;
+                    border-radius: 4px;
+                """)
+            else:
+                self.ai_status_label.setText("Not configured")
+                self.ai_status_label.setStyleSheet("""
+                    color: #86868b;
+                    font-style: italic;
+                    padding: 4px 8px;
+                    background-color: #f2f2f7;
+                    border-radius: 4px;
+                """)
+                
+        except Exception as e:
+            print(f"Error loading AI settings: {e}")
