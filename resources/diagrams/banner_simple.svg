@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with rounded corners -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="200" rx="20" ry="20" fill="url(#bg)"/>
+  
+  <!-- Fire icon -->
+  <g transform="translate(50, 70)">
+    <circle cx="30" cy="30" r="25" fill="#FFD93D"/>
+    <text x="30" y="38" font-family="Arial" font-size="24" fill="#FF6B6B" text-anchor="middle">🔥</text>
+  </g>
+  
+  <!-- Main title -->
+  <text x="120" y="90" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#ffffff">
+    WindForge
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="120" y="120" font-family="Arial, sans-serif" font-size="16" fill="#ffffff" opacity="0.9">
+    AI-Powered Development Rules &amp; Workflow Generator
+  </text>
+  
+  <!-- Version -->
+  <rect x="120" y="140" width="60" height="20" rx="10" fill="#ffffff" opacity="0.2"/>
+  <text x="150" y="153" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">v2.0.0</text>
+  
+  <!-- AI badge -->
+  <rect x="190" y="140" width="80" height="20" rx="10" fill="#4A90E2"/>
+  <text x="230" y="153" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">🤖 AI</text>
+  
+  <!-- Tech stack -->
+  <g transform="translate(600, 80)">
+    <circle cx="0" cy="0" r="15" fill="#3776ab"/>
+    <text x="0" y="5" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">Py</text>
+    
+    <circle cx="40" cy="0" r="15" fill="#41cd52"/>
+    <text x="40" y="5" font-family="Arial" font-size="10" fill="#ffffff" text-anchor="middle">Qt</text>
+    
+    <circle cx="80" cy="0" r="15" fill="#ff6b6b"/>
+    <text x="80" y="5" font-family="Arial" font-size="10" fill="#ffffff" text-anchor="middle">AI</text>
+  </g>
+</svg>

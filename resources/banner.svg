@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667eea" stop-opacity="1" />
+      <stop offset="50%" stop-color="#764ba2" stop-opacity="1" />
+      <stop offset="100%" stop-color="#f093fb" stop-opacity="1" />
+    </linearGradient>
+    
+    <!-- Text gradient -->
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="50%" stop-color="#f8f9fa" stop-opacity="1" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="1" />
+    </linearGradient>
+    
+    <!-- Shadow effect -->
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.3" stdDeviation="3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background with rounded corners -->
+  <rect width="1200" height="300" rx="25" ry="25" fill="url(#bgGradient)"/>
+  
+  <!-- Background pattern -->
+  <circle cx="100" cy="50" r="30" fill="#ffffff" opacity="0.1"/>
+  <circle cx="1100" cy="250" r="40" fill="#ffffff" opacity="0.1"/>
+  <circle cx="200" cy="200" r="20" fill="#ffffff" opacity="0.15"/>
+  <circle cx="1000" cy="80" r="25" fill="#ffffff" opacity="0.1"/>
+  
+  <!-- Geometric shapes -->
+  <polygon points="50,150 100,100 150,150 100,200" fill="#ffffff" opacity="0.1"/>
+  <polygon points="1050,100 1100,50 1150,100 1100,150" fill="#ffffff" opacity="0.1"/>
+  
+  <!-- Main logo/icon -->
+  <g transform="translate(80, 120)">
+    <!-- Fire icon -->
+    <path d="M 30 60 Q 15 45 20 25 Q 25 10 35 20 Q 45 5 55 20 Q 65 10 70 25 Q 75 45 60 60 Q 75 75 60 90 Q 45 95 35 90 Q 15 95 20 75 Q 5 75 15 60 Z" 
+          fill="#FFD93D"/>
+    <path d="M 30 50 Q 20 40 25 25 Q 30 15 35 25 Q 45 10 50 25 Q 60 15 65 25 Q 70 40 60 50 Q 65 60 55 65 Q 45 70 35 65 Q 25 70 20 60 Q 15 60 20 50 Z" 
+          fill="#FF6B6B" opacity="0.8"/>
+    <path d="M 35 45 Q 30 35 32 25 Q 35 20 38 25 Q 42 18 45 25 Q 50 20 52 25 Q 55 35 50 45 Q 52 50 48 52 Q 42 55 38 52 Q 32 55 30 50 Q 28 50 30 45 Z" 
+          fill="#FFFFFF" opacity="0.9"/>
+  </g>
+  
+  <!-- Main title -->
+  <text x="200" y="140" font-family="Arial, sans-serif" font-size="72" font-weight="bold" 
+        fill="#ffffff" filter="url(#shadow)">WindForge</text>
+  
+  <!-- Subtitle -->
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="24" font-weight="normal" 
+        fill="#ffffff" opacity="0.9">The Ultimate AI-Powered Development Rules &amp; Workflow Generator</text>
+  
+  <!-- Version badge -->
+  <g transform="translate(200, 200)">
+    <rect x="0" y="0" width="80" height="25" rx="12" fill="#ffffff" opacity="0.2"/>
+    <text x="40" y="17" font-family="Arial, sans-serif" font-size="12" font-weight="bold" 
+          fill="#ffffff" text-anchor="middle">v2.0.0</text>
+  </g>
+  
+  <!-- AI badge -->
+  <g transform="translate(300, 200)">
+    <rect x="0" y="0" width="120" height="25" rx="12" fill="#4A90E2" opacity="0.8"/>
+    <text x="60" y="17" font-family="Arial, sans-serif" font-size="12" font-weight="bold" 
+          fill="#ffffff" text-anchor="middle">🤖 AI Powered</text>
+  </g>
+  
+  <!-- Tech stack icons -->
+  <g transform="translate(900, 100)">
+    <!-- Python icon -->
+    <circle cx="0" cy="0" r="25" fill="#3776ab" opacity="0.8"/>
+    <text x="0" y="8" font-family="Arial, sans-serif" font-size="20" font-weight="bold" 
+          fill="#ffffff" text-anchor="middle">Py</text>
+    
+    <!-- PyQt icon -->
+    <circle cx="60" cy="0" r="25" fill="#41cd52" opacity="0.8"/>
+    <text x="60" y="8" font-family="Arial, sans-serif" font-size="16" font-weight="bold" 
+          fill="#ffffff" text-anchor="middle">Qt</text>
+    
+    <!-- AI icon -->
+    <circle cx="120" cy="0" r="25" fill="#ff6b6b" opacity="0.8"/>
+    <text x="120" y="8" font-family="Arial, sans-serif" font-size="16" font-weight="bold" 
+          fill="#ffffff" text-anchor="middle">AI</text>
+  </g>
+  
+  <!-- Decorative elements -->
+  <g opacity="0.3">
+    <!-- Code brackets -->
+    <text x="850" y="200" font-family="monospace" font-size="48" fill="#ffffff">{ }</text>
+    <text x="750" y="250" font-family="monospace" font-size="32" fill="#ffffff">[ ]</text>
+    
+    <!-- Workflow arrows -->
+    <path d="M 950 180 L 980 180 M 975 175 L 980 180 L 975 185" 
+          stroke="#ffffff" stroke-width="3" fill="none"/>
+    <path d="M 950 220 L 980 220 M 975 215 L 980 220 L 975 225" 
+          stroke="#ffffff" stroke-width="3" fill="none"/>
+  </g>
+  
+  <!-- Bottom highlight -->
+  <rect x="0" y="290" width="1200" height="10" fill="#ffffff" opacity="0.1"/>
+</svg>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="clearGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF7043;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E64A19;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="clearGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="1" flood-color="#FF7043" flood-opacity="0.3" stdDeviation="2"/>
+    </filter>
+  </defs>
+  
+  <!-- Eraser body -->
+  <rect x="8" y="12" width="16" height="8" rx="2" ry="2" 
+        fill="url(#clearGradient)" filter="url(#clearGlow)"/>
+  
+  <!-- Eraser tip -->
+  <rect x="6" y="14" width="4" height="4" rx="1" fill="#FFB74D"/>
+  
+  <!-- Metal band -->
+  <rect x="10" y="12" width="2" height="8" fill="#E0E0E0"/>
+  <rect x="10.5" y="13" width="1" height="6" fill="#BDBDBD"/>
+  
+  <!-- Eraser highlight -->
+  <rect x="12" y="13" width="10" height="2" rx="1" fill="#FFFFFF" opacity="0.4"/>
+  
+  <!-- Eraser lines -->
+  <rect x="14" y="15" width="8" height="0.5" rx="0.25" fill="#FFFFFF" opacity="0.6"/>
+  <rect x="14" y="17" width="8" height="0.5" rx="0.25" fill="#FFFFFF" opacity="0.4"/>
+  
+  <!-- Dust particles -->
+  <circle cx="6" cy="22" r="1" fill="#FFB74D" opacity="0.7"/>
+  <circle cx="9" cy="24" r="0.8" fill="#FFB74D" opacity="0.5"/>
+  <circle cx="4" cy="25" r="0.6" fill="#FFB74D" opacity="0.6"/>
+  <circle cx="11" cy="26" r="0.5" fill="#FFB74D" opacity="0.4"/>
+</svg>

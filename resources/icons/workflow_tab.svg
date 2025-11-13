@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="workflowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ECDC4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#44A08D;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="workflowGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" flood-color="#4ECDC4" flood-opacity="0.4" stdDeviation="3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="28" fill="url(#workflowGradient)" filter="url(#workflowGlow)"/>
+  
+  <!-- Gear outer -->
+  <circle cx="32" cy="32" r="18" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="32" cy="32" r="12" fill="url(#workflowGradient)"/>
+  <circle cx="32" cy="32" r="6" fill="#FFFFFF"/>
+  
+  <!-- Gear teeth -->
+  <rect x="30" y="14" width="4" height="6" fill="#FFFFFF" opacity="0.9"/>
+  <rect x="30" y="44" width="4" height="6" fill="#FFFFFF" opacity="0.9"/>
+  <rect x="14" y="30" width="6" height="4" fill="#FFFFFF" opacity="0.9"/>
+  <rect x="44" y="30" width="6" height="4" fill="#FFFFFF" opacity="0.9"/>
+  
+  <!-- Diagonal teeth -->
+  <rect x="21" y="19" width="4" height="4" fill="#FFFFFF" opacity="0.9" transform="rotate(45 23 21)"/>
+  <rect x="39" y="19" width="4" height="4" fill="#FFFFFF" opacity="0.9" transform="rotate(-45 41 21)"/>
+  <rect x="21" y="41" width="4" height="4" fill="#FFFFFF" opacity="0.9" transform="rotate(-45 23 43)"/>
+  <rect x="39" y="41" width="4" height="4" fill="#FFFFFF" opacity="0.9" transform="rotate(45 41 43)"/>
+  
+  <!-- Center dot -->
+  <circle cx="32" cy="32" r="2" fill="url(#workflowGradient)"/>
+</svg>

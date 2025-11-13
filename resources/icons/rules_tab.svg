@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rulesGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E55353;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" flood-color="#FF6B6B" flood-opacity="0.4" stdDeviation="3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="28" fill="url(#rulesGradient)" filter="url(#glow)"/>
+  
+  <!-- Puzzle piece shape -->
+  <path d="M 16 20 L 32 20 Q 36 16 40 20 L 48 20 L 48 28 Q 52 32 48 36 L 48 44 L 40 44 Q 36 48 32 44 L 16 44 L 16 36 Q 12 32 16 28 Z" 
+        fill="#FFFFFF" opacity="0.9"/>
+  
+  <!-- Inner puzzle details -->
+  <circle cx="24" cy="28" r="3" fill="url(#rulesGradient)" opacity="0.6"/>
+  <circle cx="40" cy="36" r="3" fill="url(#rulesGradient)" opacity="0.6"/>
+  
+  <!-- Rule lines -->
+  <rect x="20" y="24" width="16" height="2" rx="1" fill="url(#rulesGradient)" opacity="0.8"/>
+  <rect x="20" y="32" width="20" height="2" rx="1" fill="url(#rulesGradient)" opacity="0.8"/>
+  <rect x="20" y="40" width="12" height="2" rx="1" fill="url(#rulesGradient)" opacity="0.8"/>
+</svg>

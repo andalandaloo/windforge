@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="copyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00BCD4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0097A7;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="copyGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="1" flood-color="#00BCD4" flood-opacity="0.3" stdDeviation="2"/>
+    </filter>
+  </defs>
+  
+  <!-- Back document -->
+  <rect x="8" y="8" width="16" height="20" rx="2" ry="2" 
+        fill="url(#copyGradient)" filter="url(#copyGlow)" opacity="0.7"/>
+  
+  <!-- Front document -->
+  <rect x="6" y="4" width="16" height="20" rx="2" ry="2" 
+        fill="url(#copyGradient)" filter="url(#copyGlow)"/>
+  
+  <!-- Document fold -->
+  <path d="M 18 4 L 18 8 L 22 8 Z" fill="#0097A7"/>
+  
+  <!-- Document lines -->
+  <rect x="8" y="8" width="8" height="1" rx="0.5" fill="#FFFFFF" opacity="0.8"/>
+  <rect x="8" y="11" width="10" height="1" rx="0.5" fill="#FFFFFF" opacity="0.6"/>
+  <rect x="8" y="14" width="9" height="1" rx="0.5" fill="#FFFFFF" opacity="0.6"/>
+  <rect x="8" y="17" width="7" height="1" rx="0.5" fill="#FFFFFF" opacity="0.4"/>
+  
+  <!-- Copy arrows -->
+  <path d="M 24 12 L 26 14 L 24 16" stroke="#FFFFFF" stroke-width="1.5" 
+        stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
+  <path d="M 24 18 L 26 20 L 24 22" stroke="#FFFFFF" stroke-width="1.5" 
+        stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
+</svg>

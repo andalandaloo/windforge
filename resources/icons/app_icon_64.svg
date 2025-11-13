@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="appGradient64" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#357ABD;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2C5F8F;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="innerGradient64" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5BA0F2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A90E2;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="shadow64" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" flood-color="#000000" flood-opacity="0.3" stdDeviation="3"/>
+    </filter>
+  </defs>
+  
+  <!-- Main app icon background -->
+  <rect x="4" y="4" width="56" height="56" rx="12" ry="12" 
+        fill="url(#appGradient64)" filter="url(#shadow64)"/>
+  
+  <!-- Inner content area -->
+  <rect x="8" y="8" width="48" height="48" rx="8" ry="8" 
+        fill="url(#innerGradient64)" opacity="0.8"/>
+  
+  <!-- Windsurf wave pattern -->
+  <path d="M 16 24 Q 24 20 32 24 Q 40 28 48 24" 
+        stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.9"/>
+  <path d="M 16 30 Q 24 26 32 30 Q 40 34 48 30" 
+        stroke="#FFFFFF" stroke-width="1.5" fill="none" opacity="0.7"/>
+  <path d="M 16 36 Q 24 32 32 36 Q 40 40 48 36" 
+        stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.5"/>
+  
+  <!-- Document icon overlay -->
+  <rect x="22" y="40" width="20" height="16" rx="2" ry="2" 
+        fill="#FFFFFF" opacity="0.9"/>
+  
+  <!-- Document lines -->
+  <rect x="24" y="42" width="10" height="1" rx="0.5" fill="#4A90E2" opacity="0.8"/>
+  <rect x="24" y="45" width="14" height="1" rx="0.5" fill="#4A90E2" opacity="0.6"/>
+  <rect x="24" y="48" width="12" height="1" rx="0.5" fill="#4A90E2" opacity="0.6"/>
+  <rect x="24" y="51" width="11" height="1" rx="0.5" fill="#4A90E2" opacity="0.4"/>
+  
+  <!-- Gear icon for workflow -->
+  <circle cx="38" cy="48" r="3" fill="#4A90E2" opacity="0.8"/>
+  <circle cx="38" cy="48" r="2" fill="#FFFFFF"/>
+  <rect x="37" y="44" width="2" height="2" fill="#4A90E2"/>
+  <rect x="37" y="50" width="2" height="2" fill="#4A90E2"/>
+  <rect x="34" y="47" width="2" height="2" fill="#4A90E2"/>
+  <rect x="40" y="47" width="2" height="2" fill="#4A90E2"/>
+</svg>

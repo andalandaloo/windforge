@@ -1,0 +1,4 @@
+PyQt6
+pathlib2==2.3.7
+protobuf==4.25.1
+google-generativeai==0.3.2

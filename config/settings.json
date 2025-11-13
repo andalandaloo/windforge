@@ -1,0 +1,37 @@
+{
+    "default_paths": {
+        "rules": ".windsurf/rules",
+        "workflows": ".windsurf/workflows"
+    },
+    "categories": [
+        "UI",
+        "Database",
+        "Logic",
+        "Security",
+        "Performance",
+        "Testing",
+        "Documentation",
+        "API",
+        "Configuration",
+        "Deployment"
+    ],
+    "activation_modes": [
+        "Always On",
+        "Manual",
+        "Glob"
+    ],
+    "ui_settings": {
+        "window_width": 900,
+        "window_height": 600,
+        "theme": "light",
+        "font_size": 10,
+        "word_wrap": true,
+        "show_line_numbers": false,
+        "auto_save_preview": true
+    },
+    "file_settings": {
+        "auto_timestamp": true,
+        "backup_files": false,
+        "default_encoding": "utf-8"
+    }
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="previewGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9C27B0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7B1FA2;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="previewGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="1" flood-color="#9C27B0" flood-opacity="0.3" stdDeviation="2"/>
+    </filter>
+  </defs>
+  
+  <!-- Eye shape -->
+  <ellipse cx="16" cy="16" rx="12" ry="8" fill="url(#previewGradient)" filter="url(#previewGlow)"/>
+  
+  <!-- Eye white -->
+  <ellipse cx="16" cy="16" rx="8" ry="6" fill="#FFFFFF" opacity="0.9"/>
+  
+  <!-- Iris -->
+  <circle cx="16" cy="16" r="5" fill="url(#previewGradient)"/>
+  
+  <!-- Pupil -->
+  <circle cx="16" cy="16" r="3" fill="#000000" opacity="0.8"/>
+  
+  <!-- Light reflection -->
+  <circle cx="17" cy="14" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="14.5" cy="17" r="0.8" fill="#FFFFFF" opacity="0.6"/>
+  
+  <!-- Eyelashes/details -->
+  <path d="M 6 12 Q 8 10 10 12" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.7"/>
+  <path d="M 22 12 Q 24 10 26 12" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.7"/>
+  <path d="M 6 20 Q 8 22 10 20" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.7"/>
+  <path d="M 22 20 Q 24 22 26 20" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.7"/>
+</svg>

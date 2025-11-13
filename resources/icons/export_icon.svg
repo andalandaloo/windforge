@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="exportGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#673AB7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#512DA8;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="exportGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="1" flood-color="#673AB7" flood-opacity="0.3" stdDeviation="2"/>
+    </filter>
+  </defs>
+  
+  <!-- Document -->
+  <rect x="8" y="8" width="16" height="20" rx="2" ry="2" 
+        fill="url(#exportGradient)" filter="url(#exportGlow)"/>
+  
+  <!-- Document fold -->
+  <path d="M 20 8 L 20 12 L 24 12 Z" fill="#512DA8"/>
+  
+  <!-- Document content -->
+  <rect x="10" y="12" width="8" height="1" rx="0.5" fill="#FFFFFF" opacity="0.8"/>
+  <rect x="10" y="15" width="10" height="1" rx="0.5" fill="#FFFFFF" opacity="0.6"/>
+  <rect x="10" y="18" width="9" height="1" rx="0.5" fill="#FFFFFF" opacity="0.6"/>
+  <rect x="10" y="21" width="7" height="1" rx="0.5" fill="#FFFFFF" opacity="0.4"/>
+  
+  <!-- Export arrow -->
+  <path d="M 16 4 L 20 8 L 18 8 L 18 12 L 14 12 L 14 8 L 12 8 Z" 
+        fill="#FFFFFF" opacity="0.9"/>
+  
+  <!-- Arrow glow -->
+  <circle cx="16" cy="8" r="8" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.3"/>
+  
+  <!-- Export lines/waves -->
+  <path d="M 26 14 Q 28 16 26 18" stroke="#FFFFFF" stroke-width="1" 
+        fill="none" opacity="0.7"/>
+  <path d="M 26 18 Q 28 20 26 22" stroke="#FFFFFF" stroke-width="1" 
+        fill="none" opacity="0.5"/>
+  <path d="M 26 22 Q 28 24 26 26" stroke="#FFFFFF" stroke-width="1" 
+        fill="none" opacity="0.3"/>
+</svg>
