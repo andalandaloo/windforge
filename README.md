@@ -12,9 +12,9 @@
 <img src="https://img.shields.io/badge/AI-Gemini%20Flash%202.5-purple?style=for-the-badge&logo=google" alt="AI">
 <img src="https://img.shields.io/badge/License-MIT-red?style=for-the-badge" alt="License">
 
-<img src="https://img.shields.io/github/stars/windforge/windforge?style=social" alt="Stars">
-<img src="https://img.shields.io/github/forks/windforge/windforge?style=social" alt="Forks">
-<img src="https://img.shields.io/github/watchers/windforge/windforge?style=social" alt="Watchers">
+<img src="https://img.shields.io/github/stars/andalandaloo/windforge?style=social" alt="Stars">
+<img src="https://img.shields.io/github/forks/andalandaloo/windforge?style=social" alt="Forks">
+<img src="https://img.shields.io/github/watchers/andalandaloo/windforge?style=social" alt="Watchers">
 
 ---
 
@@ -144,7 +144,7 @@ python main.py
 
 #### 1️⃣ **Download WindForge**
 ```bash
-git clone https://github.com/windforge/windforge.git
+git clone https://github.com/andalandaloo/windforge.git
 cd windforge
 ```
 
@@ -184,8 +184,8 @@ python main.py
 
 ```dockerfile
 # Pull and run WindForge
-docker pull windforge/windforge:latest
-docker run -p 8080:8080 windforge/windforge
+docker pull andalandaloo/windforge:latest
+docker run -p 8080:8080 andalandaloo/windforge
 ```
 
 ---
@@ -580,9 +580,9 @@ _Generated on 2024-01-15 14:35_
 
 ### 👨‍💻 **Contributing to WindForge**
 
-[![Contributors](https://img.shields.io/github/contributors/windforge/windforge?style=for-the-badge)](https://github.com/windforge/windforge/graphs/contributors)
-[![Issues](https://img.shields.io/github/issues/windforge/windforge?style=for-the-badge)](https://github.com/windforge/windforge/issues)
-[![Pull Requests](https://img.shields.io/github/issues-pr/windforge/windforge?style=for-the-badge)](https://github.com/windforge/windforge/pulls)
+[![Contributors](https://img.shields.io/github/contributors/andalandaloo/windforge?style=for-the-badge)](https://github.com/windforge/windforge/graphs/contributors)
+[![Issues](https://img.shields.io/github/issues/andalandaloo/windforge?style=for-the-badge)](https://github.com/windforge/windforge/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/andalandaloo/windforge?style=for-the-badge)](https://github.com/windforge/windforge/pulls)
 
 </div>
 
@@ -593,7 +593,7 @@ _Generated on 2024-01-15 14:35_
 
 #### 1️⃣ **Fork & Clone**
 ```bash
-git clone https://github.com/your-username/windforge.git
+git clone https://github.com/andalandaloo/windforge.git
 cd windforge
 ```
 
@@ -915,10 +915,10 @@ Copyright (c) 2024 WindForge Contributors
 
 *Forging the future of development workflows with AI*
 
-**[⭐ Star us on GitHub](https://github.com/windforge/windforge)** • **[🐛 Report Issues](https://github.com/windforge/windforge/issues)** • **[💡 Request Features](https://github.com/windforge/windforge/discussions)**
+**[⭐ Star us on GitHub](https://github.com/andalandaloo/windforge)** • **[🐛 Report Issues](https://github.com/andalandaloo/windforge/issues)** • **[💡 Request Features](https://github.com/andalandaloo/windforge/discussions)**
 
 ---
 
-Made with ❤️ by the WindForge team
+Made with ❤️ by andalandaloo
 
 </div>
